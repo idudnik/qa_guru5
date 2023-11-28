@@ -18,19 +18,20 @@ def test_form_submit_checker():
     browser.element('.react-datepicker__month-select').type('June')
     browser.element('.react-datepicker__year-select').type('1988')
     browser.element('.react-datepicker__day--001').click()
-    browser.element('[for=hobbies-checkbox-1]').click()
-    browser.element("#uploadPicture").send_keys(os.path.abspath("../resources/1.jpeg"))
+    browser.element('[for=hobbies-checkbox-2]').click()
+    browser.element("#uploadPicture").send_keys(os.path.abspath("tests/resources/1.jpeg"))
     browser.element('#currentAddress').type('Leskova street,8')
     browser.element('#react-select-3-input').type('Uttar Pradesh').press_enter()
     browser.element('#react-select-4-input').type('Agra').press_enter()
     browser.element('#subjectsInput').type('English').press_enter()
-
 
     browser.element('#submit').press_enter()
 
     # THEN
 
     browser.all('tbody tr td:last-child').should(have.exact_texts('Ivan Ivanov',
-                                                                   'ivanov@mail.com', 'Male', '8925239563', '01 June,1988',
-                                                                    'Sports', '1.jpeg', 'Leskova street,8', 'Uttar Pradesh Agra','English'))
-
+                                                                  'ivanov@mail.com', 'Male', '8925239563',
+                                                                  '01 June,1988',
+                                                                  'English',
+                                                                  'Reading', '1.jpeg', 'Leskova street,8',
+                                                                  'Uttar Pradesh Agra'))
